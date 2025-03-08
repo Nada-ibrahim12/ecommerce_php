@@ -4,7 +4,7 @@
 // Get the requested path
 $requestUri = $_SERVER['REQUEST_URI'];
 
-$baseDir = '/Practice/ecommerce_php/api';
+$baseDir = '/Practice/ecommerce_php';
 $requestUri = substr($requestUri, strlen($baseDir));
 
 // Define routes
