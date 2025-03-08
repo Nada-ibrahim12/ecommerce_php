@@ -4,19 +4,29 @@
 // Get the requested path
 $requestUri = $_SERVER['REQUEST_URI'];
 
-$baseDir = '/Practice/ecommerce_php';
+// Remove query string from the request URI
+$requestUri = strtok($requestUri, '?');
+
+// Detect environment (Vercel or XAMPP)
+if (isset($_SERVER['VERCEL'])) {
+    // Running on Vercel
+    $baseDir = '';
+} else {
+    // Running on XAMPP or local server
+    $baseDir = '/Practice/ecommerce_php';
+}
+
+// Remove the base directory from the request URI
 $requestUri = substr($requestUri, strlen($baseDir));
 
 // Define routes
 $routes = [
-    '/' => './login.php',
+    '/' => 'login.php',
     '/admin' => 'admin.php',
     '/buyer' => 'buyer.php',
     '/manageUsers' => 'manageUsers.php',
     '/register' => 'register.php',
     '/seller' => 'seller.php',
-    // '/db' => 'db.php',
-
 ];
 
 // Check if the requested route exists
